@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: 'Clear Clinic | 프리미엄 피부 클리닉',
   description: '개인 맞춤형 전문 치료와 최첨단 기술로 당신만의 완벽한 피부를 만들어갑니다',
   generator: 'Next.js',
+  icons: {
+    icon: '/favicon.png',
+  },
 }
 
 export default function RootLayout({
