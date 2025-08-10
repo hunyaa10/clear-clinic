@@ -4,6 +4,7 @@ import { BRAND_COLOR } from "@/lib/colors"
 import clinicIntroData from "@/public/data/clinic-intro.json"
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper/modules'
+import MarqueeText from '@/components/common/MarqueeText'
 
 import 'swiper/css'
 
@@ -17,8 +18,8 @@ export default function ClinicIntroSection() {
   ]
 
   return (
-    <section id="clinic-intro" className="relative z-20 py-20 md:py-24 bg-white overflow-hidden">
-      <div className="grid md:grid-cols-[45%_55%]">
+    <section id="clinic-intro" className="relative z-20 pt-20 md:pt-24 pb-8 md:pb-12 bg-white">
+      <div className="grid md:grid-cols-[45%_55%] mb-12">
         {/* 텍스트 영역 */}
         <div className="px-4 md:px-8 lg:px-12 space-y-6 md:space-y-7">
           <div className="space-y-2">
@@ -55,7 +56,7 @@ export default function ClinicIntroSection() {
             slidesPerView={1.67}
             spaceBetween={32}
             loop={true}
-            speed={1500}
+            speed={2000}
             autoplay={{
               delay: 1000,
               disableOnInteraction: false,
@@ -80,6 +81,14 @@ export default function ClinicIntroSection() {
             ))}
           </Swiper>
         </div>
+      </div>
+
+      {/* 하단 무한 슬라이드 텍스트 */}
+      <div className="bg-white">
+        <MarqueeText
+          text="CLEAR CLINIC"
+          color={BRAND_COLOR}
+        />
       </div>
     </section>
   )
