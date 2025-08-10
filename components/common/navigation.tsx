@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 export default function Navigation() {
   return (
     <nav className="absolute top-0 left-0 right-0 z-50 bg-transparent">
-      <div className="container mx-auto px-6 py-6">
+      <div className="px-4 md:px-8 lg:px-12 py-6">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="text-2xl font-light text-white tracking-wider">CLEAR CLINIC</div>

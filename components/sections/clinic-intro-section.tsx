@@ -1,18 +1,44 @@
 "use client"
 
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { BRAND_COLOR, BRAND_BG_COLOR } from "@/lib/colors"
+import { BRAND_COLOR } from "@/lib/colors"
 import clinicIntroData from "@/public/data/clinic-intro.json"
+import { useEffect, useState, useMemo } from "react"
+import { motion } from "framer-motion"
 
 export default function ClinicIntroSection() {
-  // 각 이미지별 크기 설정
+  // 임시 이미지 설정
+  const IMAGE_WIDTH = 480
+  const GAP = 32
   const imageSizes = [
-    { width: 480, height: 640 },  // 세로로 긴 이미지
-    { width: 720, height: 480 },  // 가로로 긴 이미지
-    { width: 540, height: 540 },  // 정사각형 이미지
-    { width: 640, height: 420 },  // 와이드 이미지
+    { height: 600 },
+    { height: 400 },
+    { height: 520 },
+    { height: 480 },
   ]
+
+  const extendedImages = useMemo(
+    () => [...clinicIntroData.images, ...clinicIntroData.images, ...clinicIntroData.images],
+    []
+  )
+
+  const [currentIndex, setCurrentIndex] = useState(clinicIntroData.images.length)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex(prev => prev + 1)
+    }, 7000)
+
+    return () => clearInterval(timer)
+  }, [])
+
+  useEffect(() => {
+    if (currentIndex >= clinicIntroData.images.length * 2) {
+      const timeout = setTimeout(() => {
+        setCurrentIndex(clinicIntroData.images.length)
+      }, 1000)
+      return () => clearTimeout(timeout)
+    }
+  }, [currentIndex])
 
   return (
     <section id="clinic-intro" className="relative z-20 py-20 md:py-24 bg-white overflow-hidden">
@@ -44,44 +70,37 @@ export default function ClinicIntroSection() {
               <p key={i}>{paragraph}</p>
             ))}
           </div>
-
-          <div>
-            <Button
-              size="lg"
-              className="rounded-full px-6"
-              style={{ backgroundColor: BRAND_COLOR, color: "#0A0A0A", borderColor: "transparent" }}
-              onClick={() => {
-                const el = document.getElementById(clinicIntroData.button.target)
-                if (el) el.scrollIntoView({ behavior: "smooth", block: "start" })
-              }}
-            >
-              {clinicIntroData.button.text}
-            </Button>
-          </div>
         </div>
 
         {/* 이미지 영역 */}
         <div className="relative mt-8 md:mt-0">
-          <div className="flex gap-4 md:gap-6">
-            {clinicIntroData.images.map((img, i) => (
-              <div
-                key={`clinic-intro-image-${i}`}
-                className="relative flex-shrink-0"
-                style={{
-                  width: `${imageSizes[i].width}px`,
-                  height: `${imageSizes[i].height}px`,
-                }}
-              >
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  sizes="(min-width: 768px) 55vw, 100vw"
-                  className="object-cover"
-                  priority={i === 0}
+          <div className="relative overflow-hidden">
+            <motion.div 
+              className="flex gap-8"
+              animate={{ 
+                x: `-${currentIndex * (IMAGE_WIDTH + GAP)}px` 
+              }}
+              transition={{ 
+                duration: 1.2,
+                ease: [0.4, 0, 0.2, 1]
+              }}
+            >
+              {extendedImages.map((img, i) => (
+                <div
+                  key={`clinic-intro-image-${i}`}
+                  className="relative flex-shrink-0 rounded-lg"
+                  style={{
+                    width: `${IMAGE_WIDTH}px`,
+                    height: `${imageSizes[i % imageSizes.length].height}px`,
+                    backgroundImage: `url(${img.src})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                  }}
+                  role="img"
+                  aria-label={img.alt}
                 />
-              </div>
-            ))}
+              ))}
+            </motion.div>
           </div>
         </div>
       </div>
