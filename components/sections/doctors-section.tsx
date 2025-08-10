@@ -40,7 +40,7 @@ const Avatar = ({ doc, active, onClick }: { doc: Doctor; active: boolean; onClic
   </button>
 )
 
-export default function DoctorsCarouselSection() {
+export default function DoctorsSection() {
   const [doctors, setDoctors] = useState<Doctor[]>([])
   const [selected, setSelected] = useState<Doctor | null>(null)
 

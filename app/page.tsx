@@ -3,7 +3,7 @@ import HeroSection from "@/components/sections/hero-section"
 import ServicesSection from "@/components/sections/services-section"
 import ContactSection from "@/components/sections/contact-section"
 import Footer from "@/components/common/footer"
-import DoctorsCarouselSection from "@/components/sections/doctors-carousel-section"
+import DoctorsSection from "@/components/sections/doctors-section"
 import ClinicIntroSection from "@/components/sections/clinic-intro-section"
 
 export default function DermatologyHomePage() {
@@ -13,7 +13,7 @@ export default function DermatologyHomePage() {
       <HeroSection />
       <ClinicIntroSection />
       <ServicesSection />
-      <DoctorsCarouselSection />
+      <DoctorsSection />
       <ContactSection />
       <Footer />
     </div>
