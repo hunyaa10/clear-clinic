@@ -2,43 +2,19 @@
 
 import { BRAND_COLOR } from "@/lib/colors"
 import clinicIntroData from "@/public/data/clinic-intro.json"
-import { useEffect, useState, useMemo } from "react"
-import { motion } from "framer-motion"
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay } from 'swiper/modules'
+
+import 'swiper/css'
 
 export default function ClinicIntroSection() {
-  // 임시 이미지 설정
   const IMAGE_WIDTH = 480
-  const GAP = 32
   const imageSizes = [
     { height: 600 },
     { height: 400 },
     { height: 520 },
     { height: 480 },
   ]
-
-  const extendedImages = useMemo(
-    () => [...clinicIntroData.images, ...clinicIntroData.images, ...clinicIntroData.images],
-    []
-  )
-
-  const [currentIndex, setCurrentIndex] = useState(clinicIntroData.images.length)
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex(prev => prev + 1)
-    }, 7000)
-
-    return () => clearInterval(timer)
-  }, [])
-
-  useEffect(() => {
-    if (currentIndex >= clinicIntroData.images.length * 2) {
-      const timeout = setTimeout(() => {
-        setCurrentIndex(clinicIntroData.images.length)
-      }, 1000)
-      return () => clearTimeout(timeout)
-    }
-  }, [currentIndex])
 
   return (
     <section id="clinic-intro" className="relative z-20 py-20 md:py-24 bg-white overflow-hidden">
@@ -72,23 +48,24 @@ export default function ClinicIntroSection() {
           </div>
         </div>
 
-        {/* 이미지 영역 */}
+        {/* 이미지 영역_swiper 사용 */}
         <div className="relative mt-8 md:mt-0">
-          <div className="relative overflow-hidden">
-            <motion.div 
-              className="flex gap-8"
-              animate={{ 
-                x: `-${currentIndex * (IMAGE_WIDTH + GAP)}px` 
-              }}
-              transition={{ 
-                duration: 1.2,
-                ease: [0.4, 0, 0.2, 1]
-              }}
-            >
-              {extendedImages.map((img, i) => (
+          <Swiper
+            modules={[Autoplay]}
+            slidesPerView={1.67}
+            spaceBetween={32}
+            loop={true}
+            speed={1500}
+            autoplay={{
+              delay: 1000,
+              disableOnInteraction: false,
+            }}
+            className="w-full"
+          >
+            {clinicIntroData.images.map((img, i) => (
+              <SwiperSlide key={`${img.src}-${i}`}>
                 <div
-                  key={`clinic-intro-image-${i}`}
-                  className="relative flex-shrink-0 rounded-lg"
+                  className="relative rounded-lg"
                   style={{
                     width: `${IMAGE_WIDTH}px`,
                     height: `${imageSizes[i % imageSizes.length].height}px`,
@@ -99,9 +76,9 @@ export default function ClinicIntroSection() {
                   role="img"
                   aria-label={img.alt}
                 />
-              ))}
-            </motion.div>
-          </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </section>
