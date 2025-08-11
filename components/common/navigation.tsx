@@ -7,7 +7,7 @@ export default function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["hero", "services", "doctors-carousel", "contact"]
+      const sections = ["hero", "clinic-intro", "services", "doctors-carousel", "contact"]
       
       if (window.scrollY < 100) {
         setActiveSection("hero")
@@ -50,12 +50,16 @@ export default function Navigation() {
         <div className="flex flex-col items-end gap-8 relative">
           {[
             { id: "hero", label: "HOME" },
+            { id: "clinic-intro", label: "STORY" },
             { id: "services", label: "TREATMENT" },
             { id: "doctors-carousel", label: "DOCTORS" },
             { id: "contact", label: "CONTACT" }
           ].map(({ id, label }) => (
             <div key={id} className="relative group flex items-center gap-3">
-              <span className="text-sm text-white font-light tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span 
+                className={`text-sm font-light tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300
+                  ${activeSection === "hero" ? 'text-white' : 'text-gray-900'}`}
+              >
                 {label}
               </span>
               <a
