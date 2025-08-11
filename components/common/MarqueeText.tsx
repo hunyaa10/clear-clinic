@@ -18,11 +18,12 @@ export default function MarqueeText({
   const marqueeText = Array(repeat).fill(text)
 
   return (
-    <div className="py-4">
+    <div className="h-fit overflow-hidden">
       <Marquee
         speed={speed}
         gradient={false}
         direction="right"
+        className="py-4"
       >
         {marqueeText.map((text, i) => (
           <span

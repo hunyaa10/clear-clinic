@@ -21,7 +21,7 @@ export default function ClinicIntroSection() {
     <section id="clinic-intro" className="relative z-20 pt-20 md:pt-24 pb-8 md:pb-12 bg-white">
       <div className="grid md:grid-cols-[45%_55%] mb-12">
         {/* 텍스트 영역 */}
-        <div className="px-4 md:px-8 lg:px-12 space-y-6 md:space-y-7">
+        <div className="px-4 md:px-8 lg:px-20 space-y-6 md:space-y-7">
           <div className="space-y-2">
             <p className="text-xs tracking-[0.18em] font-semibold" style={{ color: BRAND_COLOR }}>
               {clinicIntroData.title.label}
