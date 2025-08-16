@@ -1,10 +1,10 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 import { Phone, MapPin, Clock } from "lucide-react"
 import Image from "next/image"
 import { BRAND_COLOR, BRAND_BG_COLOR } from "@/lib/colors"
+import contactData from '@/public/data/contact.json'
 
 export default function ContactSection() {
   return (
@@ -14,70 +14,55 @@ export default function ContactSection() {
           {/* Left: Copy */}
           <div className="space-y-8">
             <div className="space-y-4">
-              <Badge
-                className="w-fit font-medium"
-                style={{
-                  backgroundColor: `${BRAND_COLOR}20`, // brand tint
-                  color: "#111827",
-                  borderColor: BRAND_COLOR,
-                }}
-              >
-                병원 안내
-              </Badge>
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">언제든지 문의해주세요</h2>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                전문적인 상담과 정확한 진단을 통해 최적의 치료 방법을 제안해드립니다.
+              <p className="text-sm 2xl:text-lg tracking-[0.18em] font-semibold" style={{ color: BRAND_COLOR }}>
+                {contactData?.title?.label}
+              </p>
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
+                {contactData?.title?.main}
+              </h2>
+              <p className="text-md lg:text-lg 2xl:text-xl text-gray-600 max-w-2xl mx-auto">
+                {contactData?.subtitle}
               </p>
             </div>
 
             <div className="space-y-6">
-              <div className="flex items-center gap-4">
-                <div className="p-3 rounded-lg" style={{ backgroundColor: BRAND_COLOR }} aria-hidden="true">
-                  <Phone className="h-6 w-6 text-white" />
-                </div>
-                <div>
-                  <p className="font-medium text-gray-900">전화 예약</p>
-                  <p className="text-gray-600">02-1234-5678</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <div className="p-3 rounded-lg" style={{ backgroundColor: BRAND_COLOR }} aria-hidden="true">
-                  <MapPin className="h-6 w-6 text-white" />
-                </div>
-                <div>
-                  <p className="font-medium text-gray-900">병원 위치</p>
-                  <p className="text-gray-600">서울시 강남구 테헤란로 123</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <div className="p-3 rounded-lg" style={{ backgroundColor: BRAND_COLOR }} aria-hidden="true">
-                  <Clock className="h-6 w-6 text-white" />
-                </div>
-                <div>
-                  <p className="font-medium text-gray-900">진료 시간</p>
-                  <p className="text-gray-600">평일 09:00-18:00 | 토요일 09:00-13:00</p>
-                </div>
-              </div>
+              {contactData.contactInfo.map((info, index) => {
+                const IconComponent = info.icon === 'phone' ? Phone : 
+                                   info.icon === 'map-pin' ? MapPin : 
+                                   info.icon === 'clock' ? Clock : Phone
+                
+                return (
+                  <div key={index} className="flex items-center gap-4">
+                    <div className="p-3 rounded-lg" style={{ backgroundColor: BRAND_COLOR }} aria-hidden="true">
+                      <IconComponent className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <p className="font-medium text-gray-900">{info.title}</p>
+                      <p className="text-gray-600">{info.content}</p>
+                    </div>
+                  </div>
+                )
+              })}
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
-              <Button
+              {contactData.buttons.map((button, index) => (
+                <Button
+                key={index}
                 size="lg"
-                className="text-gray-900"
-                style={{ backgroundColor: BRAND_COLOR, borderColor: "transparent" }}
+                className={`
+                  transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-md
+                `}
+                style={{
+                  backgroundColor: button.variant === 'primary' ? BRAND_COLOR : 'transparent',
+                  borderColor: button.variant === 'outline' ? BRAND_COLOR : 'transparent',
+                  color: button.variant === 'outline' ? BRAND_COLOR : 'white',
+                  borderWidth: button.variant === 'outline' ? '2px' : '0'
+                }}
               >
-                온라인 예약
+                {button.text}
               </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="bg-white"
-                style={{ borderColor: BRAND_COLOR, color: "#374151" }}
-              >
-                카카오톡 상담
-              </Button>
+              ))}
             </div>
           </div>
 
@@ -85,11 +70,11 @@ export default function ContactSection() {
           <div className="relative">
             <div className="rounded-2xl overflow-hidden shadow-xl" style={{ backgroundColor: BRAND_BG_COLOR }}>
               <Image
-                src="/placeholder.svg?height=500&width=600"
-                alt="클리어 피부과 접수 공간"
-                width={600}
-                height={500}
-                className="object-cover w-full h-full"
+                src="/placeholder.svg"
+                alt="클리어 피부과 구글맵"
+                width={500}
+                height={300}
+                className="object-cover"
               />
             </div>
           </div>

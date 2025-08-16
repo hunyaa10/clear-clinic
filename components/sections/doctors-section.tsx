@@ -79,7 +79,7 @@ export default function DoctorsSection() {
           <p className="text-sm 2xl:text-lg tracking-[0.18em] font-semibold" style={{ color: BRAND_COLOR }}>
             {doctorsData?.title?.label}
           </p>
-          <h2 className="text-5xl 2xl:text-6xl font-light text-gray-900 tracking-tight">
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
             {doctorsData?.title?.main}
           </h2>
           <p className="text-md lg:text-lg 2xl:text-xl text-gray-600 max-w-2xl mx-auto">
