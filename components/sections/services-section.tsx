@@ -1,71 +1,31 @@
 "use client"
 
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
 import Image from "next/image"
 import { useState, useEffect } from "react"
-import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { BRAND_COLOR } from '@/lib/colors'
+import servicesData from '@/public/data/services.json'
+
 
 export default function ServicesSection() {
-  const [currentIndex, setCurrentIndex] = useState(3) // 실제 첫 번째 아이템부터 시작
+  const [currentIndex, setCurrentIndex] = useState(3)
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
   const [cardsPerView, setCardsPerView] = useState(3)
   
-  const services = [
-    {
-      title: "여드름/흉터치료",
-      subtitle: "Professional",
-      description: "깨끗하고 매끄러운 피부로, 자신감 있는 나와 마주하기",
-      hoverDescription: "개인별 피부 상태에 맞는 맞춤형 치료로\n건강하고 아름다운 피부를 되찾아드립니다",
-      image: "/placeholder.svg?height=400&width=600&text=여드름흉터치료",
-      alt: "여드름 흉터 치료"
-    },
-    {
-      title: "안티에이징",
-      subtitle: "High-End",
-      description: "손끝으로 건어 올리는 시간의 잠막, 최선의 나와 마주보기",
-      hoverDescription: "시간을 거슬러 올라가는 특별한 케어로\n젊고 탄력 있는 피부를 선사합니다",
-      image: "/placeholder.svg?height=400&width=600&text=안티에이징",
-      alt: "안티에이징 치료"
-    },
-    {
-      title: "보톡스/필러",
-      subtitle: "Premium",
-      description: "자연스러운 아름다움으로, 진정한 나의 모습 찾기",
-      hoverDescription: "자연스러운 볼륨과 라인으로\n더욱 아름다운 당신을 완성합니��",
-      image: "/placeholder.svg?height=400&width=600&text=보톡스필러",
-      alt: "보톡스 필러 시술"
-    },
-    {
-      title: "기미/잡티",
-      subtitle: "Advanced",
-      description: "맑고 균일한 피부톤으로, 빛나는 내 얼굴 되찾기",
-      hoverDescription: "피부 본연의 색을 찾는 시간\n더 자연스럽게 더 맑게",
-      image: "/placeholder.svg?height=400&width=600&text=기미잡티치료",
-      alt: "기미 잡티 치료"
-    },
-    {
-      title: "탈모클리닉",
-      subtitle: "Specialized",
-      description: "건강한 모발로, 당당한 일상의 시작하기",
-      hoverDescription: "과학적 진단과 개인 맞춤 솔루션으로\n풍성하고 건강한 모발을 되찾습니다",
-      image: "/placeholder.svg?height=400&width=600&text=탈모클리닉",
-      alt: "탈모 클리닉 치료"
-    }
-  ]
+  const services = servicesData
 
   // 화면 크기에 따른 카드 수 설정
   useEffect(() => {
     const updateCardsPerView = () => {
-      if (window.innerWidth < 768) {
+      if (window.innerWidth < 576) {
         setCardsPerView(1) // 모바일: 1개
-      } else if (window.innerWidth < 1024) {
+      } else if (window.innerWidth < 768) {
         setCardsPerView(2) // 태블릿: 2개
+      } else if (window.innerWidth < 1440) {
+        setCardsPerView(3) // 노트북: 3개
       } else {
-        setCardsPerView(3) // 데스크톱: 3개
+        setCardsPerView(4) // 데스크톱: 4개
       }
     }
 
@@ -80,18 +40,6 @@ export default function ServicesSection() {
     ...services,                      // 원본
     ...services.slice(0, cardsPerView) // 처음 카드들을 뒤에 추가
   ]
-
-  const nextSlide = () => {
-    if (isTransitioning) return
-    setIsTransitioning(true)
-    setCurrentIndex(prev => prev + 1)
-  }
-
-  const prevSlide = () => {
-    if (isTransitioning) return
-    setIsTransitioning(true)
-    setCurrentIndex(prev => prev - 1)
-  }
 
   const handleTransitionEnd = () => {
     setIsTransitioning(false)
@@ -113,16 +61,18 @@ export default function ServicesSection() {
           setCurrentIndex(prev => prev + 1)
           setIsTransitioning(true)
         }
-      }, 4000) // 4초로 변경
+      }, 4000)
 
       return () => clearInterval(interval)
     }
   }, [isTransitioning, isHovered])
 
-  // 카드 너비 계산
+  // 카드 너비 계산 - 화면 크기별로 동적 계산
   const getCardWidth = () => {
     if (cardsPerView === 1) return 'w-full'
     if (cardsPerView === 2) return 'w-1/2'
+    if (cardsPerView === 3) return 'w-1/3'
+    if (cardsPerView === 4) return 'w-1/4'
     return 'w-1/3'
   }
 
@@ -133,7 +83,7 @@ export default function ServicesSection() {
 
   return (
     <section id="services" className="relative py-20 bg-gray-50 z-20">
-      <div className="container mx-auto px-4">
+      <div className="px-4 md:px-8 lg:px-20">
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
             개인 맞춤형 피부 치료
@@ -144,7 +94,7 @@ export default function ServicesSection() {
         </div>
         
         {/* Slider Container */}
-        <div className="max-w-6xl mx-auto">
+        <div>
           {/* Cards Container */}
           <div 
             className="overflow-hidden"
@@ -238,7 +188,7 @@ export default function ServicesSection() {
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
                   (currentIndex - cardsPerView) % services.length === index
                     ? 'bg-gray-900 w-8'
-                    : 'bg-gray-300 hover:bg-gray-400'
+                    : 'bg-gray-400 hover:bg-gray-500'
                 }`}
                 onClick={() => {
                   setCurrentIndex(index + cardsPerView)

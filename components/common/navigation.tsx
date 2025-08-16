@@ -45,7 +45,7 @@ export default function Navigation() {
     <nav className="fixed top-0 right-0 z-50 h-full hidden sm:flex items-center">
       <div className="flex flex-col items-end justify-center h-full py-8 px-4">
         {/* 배경 그라데이션 */}
-        <div className="absolute right-0 top-0 w-24 h-full bg-gradient-to-l from-black/50 to-transparent" />
+        <div className="absolute right-0 top-0 w-16 h-full bg-gradient-to-l from-black/40 to-transparent" />
         
         <div className="flex flex-col items-end gap-8 relative">
           {[
