@@ -1,42 +1,49 @@
-[
-  {
-    "title": "여드름/흉터치료",
-    "subtitle": "Professional",
-    "description": "깨끗하고 매끄러운 피부로, 자신감 있는 나와 마주하기",
-    "hoverDescription": "개인별 피부 상태에 맞는 맞춤형 치료로\n건강하고 아름다운 피부를 되찾아드립니다",
-    "image": "/placeholder.svg?height=400&width=600&text=여드름흉터치료",
-    "alt": "여드름 흉터 치료"
+{
+  "title": {
+    "label": "치료 서비스",
+    "main": "개인 맞춤형 피부 치료"
   },
-  {
-    "title": "안티에이징",
-    "subtitle": "High-End",
-    "description": "손끝으로 건어 올리는 시간의 잠막, 최선의 나와 마주보기",
-    "hoverDescription": "시간을 거슬러 올라가는 특별한 케어로\n젊고 탄력 있는 피부를 선사합니다",
-    "image": "/placeholder.svg?height=400&width=600&text=안티에이징",
-    "alt": "안티에이징 치료"
-  },
-  {
-    "title": "보톡스/필러",
-    "subtitle": "Premium",
-    "description": "자연스러운 아름다움으로, 진정한 나의 모습 찾기",
-    "hoverDescription": "자연스러운 볼륨과 라인으로\n더욱 아름다운 당신을 완성합니다",
-    "image": "/placeholder.svg?height=400&width=600&text=보톡스필러",
-    "alt": "보톡스 필러 시술"
-  },
-  {
-    "title": "기미/잡티",
-    "subtitle": "Advanced",
-    "description": "맑고 균일한 피부톤으로, 빛나는 내 얼굴 되찾기",
-    "hoverDescription": "피부 본연의 색을 찾는 시간\n더 자연스럽게 더 맑게",
-    "image": "/placeholder.svg?height=400&width=600&text=기미잡티치료",
-    "alt": "기미 잡티 치료"
-  },
-  {
-    "title": "탈모클리닉",
-    "subtitle": "Specialized",
-    "description": "건강한 모발로, 당당한 일상의 시작하기",
-    "hoverDescription": "과학적 진단과 개인 맞춤 솔루션으로\n풍성하고 건강한 모발을 되찾습니다",
-    "image": "/placeholder.svg?height=400&width=600&text=탈모클리닉",
-    "alt": "탈모 클리닉 치료"
-  }
-]
+  "subtitle": "최신 장비와 검증된 치료법으로 다양한 피부 고민을 해결해드립니다.",
+  "services": [
+    {
+      "title": "여드름/흉터치료",
+      "subtitle": "Professional",
+      "description": "깨끗하고 매끄러운 피부로, 자신감 있는 나와 마주하기",
+      "hoverDescription": "개인별 피부 상태에 맞는 맞춤형 치료로\n건강하고 아름다운 피부를 되찾아드립니다",
+      "image": "/placeholder.svg?height=400&width=600&text=여드름흉터치료",
+      "alt": "여드름 흉터 치료"
+    },
+    {
+      "title": "안티에이징",
+      "subtitle": "High-End",
+      "description": "손끝으로 건어 올리는 시간의 잠막, 최선의 나와 마주보기",
+      "hoverDescription": "시간을 거슬러 올라가는 특별한 케어로\n젊고 탄력 있는 피부를 선사합니다",
+      "image": "/placeholder.svg?height=400&width=600&text=안티에이징",
+      "alt": "안티에이징 치료"
+    },
+    {
+      "title": "보톡스/필러",
+      "subtitle": "Premium",
+      "description": "자연스러운 아름다움으로, 진정한 나의 모습 찾기",
+      "hoverDescription": "자연스러운 볼륨과 라인으로\n더욱 아름다운 당신을 완성합니다",
+      "image": "/placeholder.svg?height=400&width=600&text=보톡스필러",
+      "alt": "보톡스 필러 시술"
+    },
+    {
+      "title": "기미/잡티",
+      "subtitle": "Advanced",
+      "description": "맑고 균일한 피부톤으로, 빛나는 내 얼굴 되찾기",
+      "hoverDescription": "피부 본연의 색을 찾는 시간\n더 자연스럽게 더 맑게",
+      "image": "/placeholder.svg?height=400&width=600&text=기미잡티치료",
+      "alt": "기미 잡티 치료"
+    },
+    {
+      "title": "탈모클리닉",
+      "subtitle": "Specialized",
+      "description": "건강한 모발로, 당당한 일상의 시작하기",
+      "hoverDescription": "과학적 진단과 개인 맞춤 솔루션으로\n풍성하고 건강한 모발을 되찾습니다",
+      "image": "/placeholder.svg?height=400&width=600&text=탈모클리닉",
+      "alt": "탈모 클리닉 치료"
+    }
+  ]
+}

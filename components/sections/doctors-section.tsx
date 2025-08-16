@@ -41,17 +41,17 @@ const Avatar = ({ doc, active, onClick }: { doc: Doctor; active: boolean; onClic
 )
 
 export default function DoctorsSection() {
-  const [doctors, setDoctors] = useState<Doctor[]>([])
+  const [doctorsData, setDoctorsData] = useState<any>([])
   const [selected, setSelected] = useState<Doctor | null>(null)
 
   useEffect(() => {
     fetch('/data/doctors.json')
       .then(res => res.json())
-      .then((data: Doctor[]) => {
-        setDoctors(data)
+      .then((data: any) => {
+        setDoctorsData(data)
         // 모바일에서만 초기 선택 (대표원장)
         if (window.innerWidth < 768) {
-          const chief = data.find(doc => doc.isChief) || data[0]
+          const chief = data.doctors.find((doc: Doctor) => doc.isChief) || data.doctors[0]
           setSelected(chief)
         }
       })
@@ -69,17 +69,21 @@ export default function DoctorsSection() {
     ease: "easeInOut"
   }
 
+  const doctors = doctorsData?.doctors || []
+
   return (
     <section id="doctors-carousel" className="relative z-30 py-16 bg-white">
       <div className="container mx-auto px-4">
         {/* 섹션 타이틀 */}
         <div className="text-center space-y-3 mb-10">
-          <p className="text-xs font-semibold tracking-[0.2em]" style={{ color: BRAND_COLOR }}>
-            의료진 소개
+          <p className="text-sm 2xl:text-lg tracking-[0.18em] font-semibold" style={{ color: BRAND_COLOR }}>
+            {doctorsData?.title?.label}
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">클리어 피부과 의료진</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base">
-            풍부한 임상 경험과 섬세한 진료로, 당신의 피부 고민을 함께 해결합니다.
+          <h2 className="text-5xl 2xl:text-6xl font-light text-gray-900 tracking-tight">
+            {doctorsData?.title?.main}
+          </h2>
+          <p className="text-md lg:text-lg 2xl:text-xl text-gray-600 max-w-2xl mx-auto">
+            {doctorsData?.subtitle}
           </p>
         </div>
 
@@ -88,7 +92,7 @@ export default function DoctorsSection() {
           <div className="md:hidden space-y-6">
             {/* 아바타 목록 */}
             <div className="flex items-center justify-between px-1">
-              {doctors.map((doc) => (
+              {doctors.map((doc: Doctor) => (
                 <Avatar
                   key={doc.id}
                   doc={doc}
@@ -245,7 +249,7 @@ export default function DoctorsSection() {
                   transition={tweenFast}
                   className="grid grid-cols-3 gap-6"
                 >
-                  {doctors.map((doctor) => (
+                  {doctors.map((doctor: Doctor) => (
                     <motion.button
                       key={doctor.id}
                       onClick={() => setSelected(doctor)}
