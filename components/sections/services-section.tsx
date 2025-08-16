@@ -13,7 +13,7 @@ export default function ServicesSection() {
   const [isHovered, setIsHovered] = useState(false)
   const [cardsPerView, setCardsPerView] = useState(3)
   
-  const services = servicesData
+  const services = servicesData.services
 
   // 화면 크기에 따른 카드 수 설정
   useEffect(() => {
@@ -85,11 +85,14 @@ export default function ServicesSection() {
     <section id="services" className="relative py-20 bg-gray-50 z-20">
       <div className="px-4 md:px-8 lg:px-20">
         <div className="text-center space-y-4 mb-16">
+          <p className="text-sm 2xl:text-lg tracking-[0.18em] font-semibold" style={{ color: BRAND_COLOR }}>
+            {servicesData.title.label}
+          </p>
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
-            개인 맞춤형 피부 치료
+            {servicesData.title.main}
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            최신 장비와 검증된 치료법으로 다양한 피부 고민을 해결해드립니다.
+          <p className="text-md lg:text-lg 2xl:text-xl text-gray-600 max-w-2xl mx-auto">
+            {servicesData.subtitle}
           </p>
         </div>
         

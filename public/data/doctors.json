@@ -1,54 +1,61 @@
-[
-  {
-    "id": 0,
-    "name": "김민수",
-    "title": "대표원장",
-    "specialty": "피부과 전문의",
-    "image": "/placeholder.svg?height=400&width=300&text=대표원장",
-    "isChief": true,
-    "filmography": {
-      "education": [
-      "서울대학교 의과대학 졸업", 
-      "서울대학교병원 피부과 전공의", 
-      "서울대학교병원 피부과 전임의"
-      ],
-      "experience": [
-        "現 클리어 피부과 대표원장",
-        "前 서울대학교병원 피부과 임상교수",
-        "前 강남세브란스병원 피부과 과장"
-      ]
-    }
+{
+  "title": {
+    "label": "의료진 소개",
+    "main": "클리어 피부과 의료진"
   },
-  {
-    "id": 1,
-    "name": "이지영",
-    "title": "원장",
-    "specialty": "미용피부과 전문의",
-    "image": "/placeholder.svg?height=400&width=300&text=원장2",
-    "isChief": false,
-    "filmography": {
-      "education": [
-        "연세대학교 의과대학 졸업",
-        "연세대학교 세브란스병원 피부과 전공의",
-        "연세대학교 세브란스병원 피부과 전임의"
-      ],
-      "experience": [
-      "現 클리어 피부과 원장",
-      "前 연세대학교 세브란스병원 피부과 전임의", 
-      "前 강남차병원 피부과 과장"
-      ]
+  "subtitle": "풍부한 임상 경험과 섬세한 진료로, 당신의 피부 고민을 함께 해결합니다.",
+  "doctors": [
+    {
+      "id": 0,
+      "name": "김민수",
+      "title": "대표원장",
+      "specialty": "피부과 전문의",
+      "image": "/placeholder.svg?height=400&width=300&text=대표원장",
+      "isChief": true,
+      "filmography": {
+        "education": [
+        "서울대학교 의과대학 졸업", 
+        "서울대학교병원 피부과 전공의", 
+        "서울대학교병원 피부과 전임의"
+        ],
+        "experience": [
+          "現 클리어 피부과 대표원장",
+          "前 서울대학교병원 피부과 임상교수",
+          "前 강남세브란스병원 피부과 과장"
+        ]
+      }
+    },
+    {
+      "id": 1,
+      "name": "이지영",
+      "title": "원장",
+      "specialty": "미용피부과 전문의",
+      "image": "/placeholder.svg?height=400&width=300&text=원장2",
+      "isChief": false,
+      "filmography": {
+        "education": [
+          "연세대학교 의과대학 졸업",
+          "연세대학교 세브란스병원 피부과 전공의",
+          "연세대학교 세브란스병원 피부과 전임의"
+        ],
+        "experience": [
+        "現 클리어 피부과 원장",
+        "前 연세대학교 세브란스병원 피부과 전임의", 
+        "前 강남차병원 피부과 과장"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "name": "박성호",
+      "title": "원장",
+      "specialty": "레이저치료 전문의",
+      "image": "/placeholder.svg?height=400&width=300&text=원장3",
+      "isChief": false,
+      "filmography": {
+        "education": ["고려대학교 의과대학 졸업", "고려대학교병원 피부과 전공의", "고려대학교병원 피부과 전임의"],
+        "experience": ["現 클리어 피부과 원장", "前 고려대학교병원 피부과 전임의", "前 분당서울대병원 피부과 과장"]
+      }
     }
-  },
-  {
-    "id": 2,
-    "name": "박성호",
-    "title": "원장",
-    "specialty": "레이저치료 전문의",
-    "image": "/placeholder.svg?height=400&width=300&text=원장3",
-    "isChief": false,
-    "filmography": {
-      "education": ["고려대학교 의과대학 졸업", "고려대학교병원 피부과 전공의", "고려대학교병원 피부과 전임의"],
-      "experience": ["現 클리어 피부과 원장", "前 고려대학교병원 피부과 전임의", "前 분당서울대병원 피부과 과장"]
-    }
-  }
-]
+  ]
+}
