@@ -2,7 +2,19 @@
 
 import { Button } from "@/components/ui/button"
 import { Phone, MapPin, Clock } from "lucide-react"
-import Image from "next/image"
+import dynamic from 'next/dynamic'
+
+const GoogleMapComponent = dynamic(
+  () => import("@/components/google/GoogleMap"),
+  { 
+    loading: () => (
+      <div className="w-full h-[400px] bg-gray-100 rounded-2xl flex items-center justify-center">
+        지도를 불러오는 중...
+      </div>
+    ),
+    ssr: false
+  }
+)
 import { BRAND_COLOR, BRAND_BG_COLOR } from "@/lib/colors"
 import contactData from '@/public/data/contact.json'
 
@@ -11,7 +23,7 @@ export default function ContactSection() {
     <section id="contact" className="relative py-20 bg-gray-50 z-20">
       <div className="container mx-auto px-4 md:px-8 lg:px-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left: Copy */}
+          {/* 병원정보 */}
           <div className="space-y-8">
             <div className="space-y-4">
               <p className="text-sm 2xl:text-lg tracking-[0.18em] font-semibold" style={{ color: BRAND_COLOR }}>
@@ -66,17 +78,16 @@ export default function ContactSection() {
             </div>
           </div>
 
-          {/* Right: Image */}
+          {/* 구글맵 */}
           <div className="relative">
-            <div className="rounded-2xl overflow-hidden shadow-xl" style={{ backgroundColor: BRAND_BG_COLOR }}>
-              <Image
-                src="/placeholder.svg"
-                alt="클리어 피부과 구글맵"
-                width={500}
-                height={300}
-                className="object-cover"
+            <div className="rounded-2xl overflow-hidden shadow-xl">
+              <GoogleMapComponent
+                center={{ lat: 37.579617, lng: 126.998859 }} // 임시:서울대학교병원 주소
+                height="400px"
+                className="w-full"
               />
             </div>
+            <p className="text-sm text-gray-500 mt-2">* 임시로 서울대학교 병원 주소로 설정</p>
           </div>
         </div>
       </div>
