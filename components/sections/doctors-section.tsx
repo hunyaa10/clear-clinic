@@ -73,13 +73,13 @@ export default function DoctorsSection() {
 
   return (
     <section id="doctors-carousel" className="relative z-30 py-16 bg-white">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 md:px-8 lg:px-20">
         {/* 섹션 타이틀 */}
         <div className="text-center space-y-3 mb-10">
           <p className="text-sm 2xl:text-lg tracking-[0.18em] font-semibold" style={{ color: BRAND_COLOR }}>
             {doctorsData?.title?.label}
           </p>
-          <h2 className="text-5xl 2xl:text-6xl font-light text-gray-900 tracking-tight">
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
             {doctorsData?.title?.main}
           </h2>
           <p className="text-md lg:text-lg 2xl:text-xl text-gray-600 max-w-2xl mx-auto">

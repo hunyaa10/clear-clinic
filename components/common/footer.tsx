@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="relative bg-white text-gray-600 py-12 z-20 border-t border-gray-200">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 md:px-8 lg:px-20">
         <div className="grid md:grid-cols-3 gap-8">
           <div>
             <h3 className="text-gray-900 text-xl font-bold mb-4">클리어 피부과</h3>
@@ -29,7 +29,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-gray-200 mt-8 pt-8 text-center text-sm text-gray-500">
-          <p>&copy; 2024 클리어 피부과. All rights reserved.</p>
+          <p>&copy; 2025 클리어 피부과. All rights reserved.</p>
         </div>
       </div>
     </footer>
