@@ -72,7 +72,7 @@ export default function DoctorsSection() {
   const doctors = doctorsData?.doctors || []
 
   return (
-    <section id="doctors-carousel" className="relative z-30 py-16 bg-white">
+    <section id="doctors-carousel" className="relative z-20 py-16 bg-white">
       <div className="container mx-auto px-4 md:px-8 lg:px-20">
         {/* 섹션 타이틀 */}
         <div className="text-center space-y-3 mb-10">
