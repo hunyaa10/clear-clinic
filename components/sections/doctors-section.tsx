@@ -73,7 +73,7 @@ export default function DoctorsSection() {
 
   return (
     <section id="doctors-carousel" className="relative z-30 py-16 bg-white">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 md:px-8 lg:px-20">
         {/* 섹션 타이틀 */}
         <div className="text-center space-y-3 mb-10">
           <p className="text-sm 2xl:text-lg tracking-[0.18em] font-semibold" style={{ color: BRAND_COLOR }}>

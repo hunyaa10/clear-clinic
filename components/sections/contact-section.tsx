@@ -9,7 +9,7 @@ import contactData from '@/public/data/contact.json'
 export default function ContactSection() {
   return (
     <section id="contact" className="relative py-20 bg-gray-50 z-20">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 md:px-8 lg:px-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left: Copy */}
           <div className="space-y-8">
@@ -20,7 +20,7 @@ export default function ContactSection() {
               <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
                 {contactData?.title?.main}
               </h2>
-              <p className="text-md lg:text-lg 2xl:text-xl text-gray-600 max-w-2xl mx-auto">
+              <p className="text-md lg:text-lg 2xl:text-xl text-gray-600 max-w-2xl">
                 {contactData?.subtitle}
               </p>
             </div>
