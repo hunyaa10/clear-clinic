@@ -1,6 +1,9 @@
 export default function Footer() {
   return (
-    <footer className="relative bg-white text-gray-600 py-12 z-20 border-t border-gray-200">
+    <footer className="relative bg-white text-gray-600 pb-12 z-20 border-t border-gray-200">
+      <div className="w-full bg-gray-100 text-gray-600 text-center py-4 text-sm mb-12 border-b border-gray-200">
+        <p>⚠️ 실제 병원사이트가 아닌 개인 포트폴리오 사이트입니다.</p>
+      </div>
       <div className="container mx-auto px-4 md:px-8 lg:px-20">
         <div className="grid md:grid-cols-3 gap-8">
           <div>
