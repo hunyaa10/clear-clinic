@@ -3,8 +3,9 @@
 import ContactButton from "@/components/ui/buttons/contact-button"
 import { Phone, MapPin, Clock } from "lucide-react"
 import dynamic from 'next/dynamic'
-import { useState } from 'react'
-import ContactModal from '@/components/contact/ContactModal'
+import { useModal } from '@/components/providers/ModalProvider'
+import { BRAND_COLOR } from "@/lib/colors"
+import contactData from '@/public/data/contact.json'
 
 const GoogleMapComponent = dynamic(
   () => import("@/components/google/GoogleMap"),
@@ -17,11 +18,10 @@ const GoogleMapComponent = dynamic(
     ssr: false
   }
 )
-import { BRAND_COLOR, BRAND_BG_COLOR } from "@/lib/colors"
-import contactData from '@/public/data/contact.json'
 
 export default function ContactSection() {
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const { openModal } = useModal()
+
   return (
     <section id="contact" className="relative py-20 bg-gray-50 z-20">
       <div className="container mx-auto px-4 md:px-8 lg:px-20">
@@ -68,7 +68,7 @@ export default function ContactSection() {
                   variant={button.variant === 'primary' ? 'primary' : 'outline'}
                   onClick={() => {
                     if (button.text === '온라인 예약') {
-                      setIsModalOpen(true)
+                      openModal()
                     }
                   }}
                 >
@@ -92,10 +92,7 @@ export default function ContactSection() {
         </div>
       </div>
 
-      <ContactModal 
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
+
     </section>
   )
 }

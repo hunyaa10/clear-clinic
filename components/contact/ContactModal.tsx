@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css"
 import { ko } from 'date-fns/locale'
@@ -17,6 +17,14 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const [phone, setPhone] = useState('')
   const [date, setDate] = useState<Date | null>(null)
   const [time, setTime] = useState('')
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+  }, [isOpen])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -57,7 +65,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   return (
     <div 
-      className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-[999]"
+      className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-[9999]"
       onClick={onClose}
     >
       <div 

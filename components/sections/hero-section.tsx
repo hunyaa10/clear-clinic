@@ -2,15 +2,14 @@
 
 import Image from "next/image"
 import HeroButton from "@/components/ui/buttons/hero-button"
-import { useState } from 'react'
-import ContactModal from "@/components/contact/ContactModal"
+import { useModal } from "@/components/providers/ModalProvider"
 
 
 export default function HeroSection() {
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const { openModal } = useModal()
   
   const handlePrimaryClick = () => {
-    setIsModalOpen(true)
+    openModal()
   }
 
   const handleSecondaryClick = () => {
@@ -73,10 +72,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <ContactModal 
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
+
     </section>
   )
 }
