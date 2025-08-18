@@ -23,8 +23,8 @@ export default function ContactSection() {
   const { openModal } = useModal()
 
   return (
-    <section id="contact" className="relative py-20 bg-gray-50 z-20">
-      <div className="container mx-auto px-4 md:px-8 lg:px-20">
+    <section id="contact" className="relative bg-gray-50 z-20">
+      <div className="px-4 md:px-8 lg:px-20 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* 병원정보 */}
           <div className="space-y-8">
