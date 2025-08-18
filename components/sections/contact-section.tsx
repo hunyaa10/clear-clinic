@@ -1,8 +1,11 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
+import ContactButton from "@/components/ui/buttons/contact-button"
 import { Phone, MapPin, Clock } from "lucide-react"
 import dynamic from 'next/dynamic'
+import { useModal } from '@/components/providers/ModalProvider'
+import { BRAND_COLOR } from "@/lib/colors"
+import contactData from '@/public/data/contact.json'
 
 const GoogleMapComponent = dynamic(
   () => import("@/components/google/GoogleMap"),
@@ -15,13 +18,13 @@ const GoogleMapComponent = dynamic(
     ssr: false
   }
 )
-import { BRAND_COLOR, BRAND_BG_COLOR } from "@/lib/colors"
-import contactData from '@/public/data/contact.json'
 
 export default function ContactSection() {
+  const { openModal } = useModal()
+
   return (
-    <section id="contact" className="relative py-20 bg-gray-50 z-20">
-      <div className="container mx-auto px-4 md:px-8 lg:px-20">
+    <section id="contact" className="relative bg-gray-50 z-20">
+      <div className="px-4 md:px-8 lg:px-20 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* 병원정보 */}
           <div className="space-y-8">
@@ -59,21 +62,18 @@ export default function ContactSection() {
 
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
               {contactData.buttons.map((button, index) => (
-                <Button
-                key={index}
-                size="lg"
-                className={`
-                  transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-md
-                `}
-                style={{
-                  backgroundColor: button.variant === 'primary' ? BRAND_COLOR : 'transparent',
-                  borderColor: button.variant === 'outline' ? BRAND_COLOR : 'transparent',
-                  color: button.variant === 'outline' ? BRAND_COLOR : 'white',
-                  borderWidth: button.variant === 'outline' ? '2px' : '0'
-                }}
-              >
-                {button.text}
-              </Button>
+                <ContactButton
+                  key={index}
+                  size="lg"
+                  variant={button.variant === 'primary' ? 'primary' : 'outline'}
+                  onClick={() => {
+                    if (button.text === '온라인 예약') {
+                      openModal()
+                    }
+                  }}
+                >
+                  {button.text}
+                </ContactButton>
               ))}
             </div>
           </div>
@@ -91,6 +91,8 @@ export default function ContactSection() {
           </div>
         </div>
       </div>
+
+
     </section>
   )
 }

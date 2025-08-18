@@ -2,11 +2,14 @@
 
 import Image from "next/image"
 import HeroButton from "@/components/ui/buttons/hero-button"
+import { useModal } from "@/components/providers/ModalProvider"
+
 
 export default function HeroSection() {
+  const { openModal } = useModal()
+  
   const handlePrimaryClick = () => {
-    // 전문 상담 예약 로직
-    console.log("전문 상담 예약 클릭")
+    openModal()
   }
 
   const handleSecondaryClick = () => {
@@ -15,7 +18,7 @@ export default function HeroSection() {
   }
 
   return (
-    <section className="sticky top-0 h-screen flex items-end overflow-hidden z-10">
+    <section className="sticky top-0 h-screen flex items-end overflow-hidden z-20">
       {/* 배경 이미지 */}
       <div className="absolute inset-0">
         <Image
@@ -68,6 +71,8 @@ export default function HeroSection() {
           <div className="w-px h-8 bg-white/30"></div>
         </div>
       </div>
+
+
     </section>
   )
 }

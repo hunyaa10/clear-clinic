@@ -8,8 +8,10 @@ import ClinicIntroSection from "@/components/sections/clinic-intro-section"
 
 export default function DermatologyHomePage() {
   return (
-    <div className="min-h-screen bg-white w-full">
-      <Navigation />
+    <div className="min-h-screen bg-white w-full overflow-x-hidden">
+      <div className="hidden md:block">
+        <Navigation />
+      </div>
       <HeroSection />
       <ClinicIntroSection />
       <ServicesSection />
