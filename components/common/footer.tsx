@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="relative bg-white text-gray-600 pb-12 z-[50] border-t border-gray-200">
+    <footer className="relative bg-white text-gray-600 z-[50] border-t border-gray-200">
       {/* 알림 배너 */}
       <div className="w-full bg-gray-100 text-gray-600 border-b border-gray-200">
         <div className="px-4 md:px-8 lg:px-20 py-4">
