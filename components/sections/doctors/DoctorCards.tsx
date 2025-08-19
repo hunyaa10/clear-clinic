@@ -81,7 +81,7 @@ export default function DoctorCards({
       </div>
 
       {/* 데스크톱 레이아웃 */}
-      <div className="hidden md:block h-full">
+      <div className="hidden md:block h-full min-h-[25vh]">
         <AnimatePresence mode="wait">
           {selected ? (
             <>
@@ -145,7 +145,7 @@ export default function DoctorCards({
                     </div>
                   )}
 
-                  <div className="flex justify-end absolute bottom-6 right-6">
+                  <div className="flex justify-end absolute top-0 bottom-auto right-6 xl:bottom-6 xl:top-auto">
                     <button
                       onClick={() => setSelected(null)}
                       className="bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg text-gray-600 hover:text-gray-900 flex items-center gap-2 transition-all hover:bg-white"
