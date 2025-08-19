@@ -1,5 +1,6 @@
 "use client"
 
+import React, { forwardRef } from 'react';
 import { Card } from "@/components/ui/card"
 import Image from "next/image"
 import { useState, useEffect } from "react"
@@ -7,7 +8,7 @@ import { BRAND_COLOR } from '@/lib/colors'
 import servicesData from '@/public/data/services.json'
 
 
-export default function ServicesSection() {
+const ServicesSection = forwardRef<HTMLDivElement, {}>((props, ref) => {
   const [currentIndex, setCurrentIndex] = useState(3)
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
@@ -82,7 +83,7 @@ export default function ServicesSection() {
   }
 
   return (
-    <section id="services" className="relative py-20 bg-gray-50 z-20">
+    <section id="services" ref={ref} className="relative py-20 bg-gray-50 z-20">
       <div className="px-4 md:px-8 lg:px-20">
         <div className="text-center space-y-4 mb-16">
           <p className="text-sm 2xl:text-lg tracking-[0.18em] font-semibold" style={{ color: BRAND_COLOR }}>
@@ -204,4 +205,6 @@ export default function ServicesSection() {
       </div>
     </section>
   )
-}
+})
+
+export default ServicesSection

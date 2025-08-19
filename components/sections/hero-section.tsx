@@ -5,7 +5,7 @@ import HeroButton from "@/components/ui/buttons/hero-button"
 import { useModal } from "@/components/providers/ModalProvider"
 
 
-export default function HeroSection() {
+export default function HeroSection({ onScrollToServices }: { onScrollToServices: () => void }) {
   const { openModal } = useModal()
   
   const handlePrimaryClick = () => {
@@ -13,8 +13,7 @@ export default function HeroSection() {
   }
 
   const handleSecondaryClick = () => {
-    // 치료 프로그램 보기 로직
-    console.log("치료 프로그램 보기 클릭")
+    onScrollToServices()
   }
 
   return (
